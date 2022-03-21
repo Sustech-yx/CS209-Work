@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MainA</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MainA (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MainA</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 42)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MainA$InputReader</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 60)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.io.*;
+<i>2</i>&nbsp;import java.util.*;
+<i>3</i>&nbsp;import static java.lang.Math.*;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<b class="nc"><i>6</i>&nbsp;public class MainA {</b>
+<i>7</i>&nbsp;    static class InputReader {
+<i>8</i>&nbsp;        public BufferedReader reader;
+<i>9</i>&nbsp;        public StringTokenizer tokenizer;
+<b class="nc"><i>10</i>&nbsp;        public InputReader(InputStream stream) {</b>
+<b class="nc"><i>11</i>&nbsp;            reader = new BufferedReader(new InputStreamReader(stream), 32768);</b>
+<b class="nc"><i>12</i>&nbsp;            tokenizer = null;</b>
+<i>13</i>&nbsp;        }
+<i>14</i>&nbsp;        public String next() {
+<b class="nc"><i>15</i>&nbsp;            while (tokenizer == null || !tokenizer.hasMoreTokens()) {</b>
+<i>16</i>&nbsp;                try {
+<b class="nc"><i>17</i>&nbsp;                    tokenizer = new StringTokenizer(reader.readLine());</b>
+<b class="nc"><i>18</i>&nbsp;                } catch (IOException e) {</b>
+<b class="nc"><i>19</i>&nbsp;                    throw new RuntimeException(e);</b>
+<b class="nc"><i>20</i>&nbsp;                }</b>
+<i>21</i>&nbsp;            }
+<b class="nc"><i>22</i>&nbsp;            return tokenizer.nextToken();</b>
+<i>23</i>&nbsp;        }
+<i>24</i>&nbsp;        public int nextInt() {
+<b class="nc"><i>25</i>&nbsp;            return Integer.parseInt(next());</b>
+<i>26</i>&nbsp;        }
+<i>27</i>&nbsp;        public long nextLong() {
+<b class="nc"><i>28</i>&nbsp;            return Long.parseLong(next());</b>
+<i>29</i>&nbsp;        }
+<i>30</i>&nbsp;        public boolean hasNext() {
+<i>31</i>&nbsp;            try {
+<b class="nc"><i>32</i>&nbsp;                String string = reader.readLine();</b>
+<b class="nc"><i>33</i>&nbsp;                if (string == null) {</b>
+<b class="nc"><i>34</i>&nbsp;                    return false;</b>
+<i>35</i>&nbsp;                }
+<b class="nc"><i>36</i>&nbsp;                tokenizer = new StringTokenizer(string);</b>
+<b class="nc"><i>37</i>&nbsp;                return tokenizer.hasMoreTokens();</b>
+<b class="nc"><i>38</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>39</i>&nbsp;                return false;</b>
+<i>40</i>&nbsp;            }
+<i>41</i>&nbsp;        }
+<i>42</i>&nbsp;    }
+<b class="nc"><i>43</i>&nbsp;    static InputReader in = new InputReader(System.in);</b>
+<b class="nc"><i>44</i>&nbsp;    static PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));</b>
+<i>45</i>&nbsp;//    static Scanner in = new Scanner(System.in);
+<i>46</i>&nbsp;    static void ini() {
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    static long getFac(int n) {
+<b class="nc"><i>51</i>&nbsp;        if (n ==1 || n == 0)return 1;</b>
+<b class="nc"><i>52</i>&nbsp;        if ((n &amp; 1) == 1) {</b>
+<b class="nc"><i>53</i>&nbsp;            return (n * getFac(n-1)) % MOD;</b>
+<i>54</i>&nbsp;        }
+<b class="nc"><i>55</i>&nbsp;        long temp = getFac(n &gt;&gt; 1);</b>
+<b class="nc"><i>56</i>&nbsp;        return ((cn2(n)*temp)%MOD *temp)%MOD;</b>
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    static long pow(long base, long exp) {
+<b class="nc"><i>60</i>&nbsp;        long res = 1;</b>
+<b class="nc"><i>61</i>&nbsp;        while (exp &gt; 0) {</b>
+<b class="nc"><i>62</i>&nbsp;            if ((exp &amp; 1) == 1) res *= base;</b>
+<b class="nc"><i>63</i>&nbsp;            base *= base;</b>
+<b class="nc"><i>64</i>&nbsp;            exp &gt;&gt;=1;</b>
+<i>65</i>&nbsp;        }
+<b class="nc"><i>66</i>&nbsp;        return res % MOD;</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    static long cn2(long n) {
+<b class="nc"><i>70</i>&nbsp;        long x = (1L &lt;&lt; n) + 1;</b>
+<b class="nc"><i>71</i>&nbsp;        long mask = (1L &lt;&lt; n) - 1;</b>
+<b class="nc"><i>72</i>&nbsp;        return ((pow(x, n) &gt;&gt; ((n &gt;&gt; 1) * n)) &amp; mask) % MOD;</b>
+<i>73</i>&nbsp;    }
+<i>74</i>&nbsp;
+<b class="nc"><i>75</i>&nbsp;    static String yes = &quot;YES&quot;;</b>
+<b class="nc"><i>76</i>&nbsp;    static String no = &quot;NO&quot;;</b>
+<b class="nc"><i>77</i>&nbsp;    static int ipInf = Integer.MAX_VALUE-5;</b>
+<b class="nc"><i>78</i>&nbsp;    static int inInf = Integer.MIN_VALUE+5;</b>
+<b class="nc"><i>79</i>&nbsp;    static long lpInf = Long.MAX_VALUE - 5;</b>
+<b class="nc"><i>80</i>&nbsp;    static long lnInf = Long.MIN_VALUE + 5;</b>
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>83</i>&nbsp;        int t = 1;</b>
+<b class="nc"><i>84</i>&nbsp;        ini();</b>
+<b class="nc"><i>85</i>&nbsp;        while (t -- &gt; 0) {</b>
+<b class="nc"><i>86</i>&nbsp;            solve();</b>
+<i>87</i>&nbsp;        }
+<b class="nc"><i>88</i>&nbsp;        out.close();</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;    static final long MOD = 998244353;
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    static void solve() {
+<b class="nc"><i>93</i>&nbsp;        int n = in.nextInt();</b>
+<b class="nc"><i>94</i>&nbsp;        if (n == 1) {</b>
+<b class="nc"><i>95</i>&nbsp;            out.println(1);</b>
+<i>96</i>&nbsp;            return;
+<i>97</i>&nbsp;        }
+<b class="nc"><i>98</i>&nbsp;        int[] arr = new int[n+1];</b>
+<i>99</i>&nbsp;        int a, b;
+<b class="nc"><i>100</i>&nbsp;        for (int i = 0; i &lt; n - 1; i++) {</b>
+<b class="nc"><i>101</i>&nbsp;            a = in.nextInt() ;</b>
+<b class="nc"><i>102</i>&nbsp;            b = in.nextInt() ;</b>
+<b class="nc"><i>103</i>&nbsp;            arr[a]++;</b>
+<b class="nc"><i>104</i>&nbsp;            arr[b]++;</b>
+<i>105</i>&nbsp;        }
+<b class="nc"><i>106</i>&nbsp;        arr[1]++;</b>
+<i>107</i>&nbsp;
+<b class="nc"><i>108</i>&nbsp;        long res = 1;</b>
+<b class="nc"><i>109</i>&nbsp;        for (int i = 1; i &lt;= n; i++) {</b>
+<b class="nc"><i>110</i>&nbsp;            res = (res * getFac(arr[i]-1)) % MOD;</b>
+<i>111</i>&nbsp;        }
+<i>112</i>&nbsp;
+<b class="nc"><i>113</i>&nbsp;        out.println(res);</b>
+<i>114</i>&nbsp;    }
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-15 19:54</div>
+</div>
+</body>
+</html>

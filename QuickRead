@@ -1,0 +1,98 @@
+import java.io.*;
+import java.util.*;
+import static java.lang.Math.*;
+
+
+public class Main {
+    static class InputReader {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
+        public InputReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
+        }
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
+        }
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+        public long nextLong() {
+            return Long.parseLong(next());
+        }
+        public boolean hasNext() {
+            try {
+                String string = reader.readLine();
+                if (string == null) {
+                    return false;
+                }
+                tokenizer = new StringTokenizer(string);
+                return tokenizer.hasMoreTokens();
+            } catch (IOException e) {
+                return false;
+            }
+        }
+    }
+    static InputReader in = new InputReader(System.in);
+    static PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+    static void ini() {
+
+    }
+    static String yes = "YES";
+    static String no = "NO";
+    static int ipInf = Integer.MAX_VALUE-5;
+    static int inInf = Integer.MIN_VALUE+5;
+    static long lpInf = Long.MAX_VALUE - 5;
+    static long lnInf = Long.MIN_VALUE + 5;
+
+    public static void main(String[] args) {
+        int t = in.nextInt();
+        ini();
+        while (t -- > 0) {
+            solve();
+        }
+        out.close();
+    }
+    static void solve() {
+
+    }
+
+
+
+
+
+
+
+    static void printArr (int[] arr) {
+        int n = arr.length;
+        if (n == 0) return;
+        for (int i = 0; i < n-1; i++) {
+            out.print(arr[i] + " ");
+        }
+        out.println(arr[n-1]);
+    }
+    static void printArr (long[] arr) {
+        int n = arr.length;
+        if (n == 0) return;
+        for (int i = 0; i < n-1; i++) {
+            out.print(arr[i] + " ");
+        }
+        out.println(arr[n-1]);
+    }
+    static long _gcd (long a, long b) {
+        long temp;
+        while (true) {
+            temp = a % b;
+            if (temp == 0) return b;
+            a = b;
+            b = temp;
+        }
+    }
+}

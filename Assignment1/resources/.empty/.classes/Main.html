@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Main</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 46)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.io.*;
+<i>2</i>&nbsp;import java.nio.*;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;import java.util.zip.*;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;// 浏览java的源码和字节码
+<b class="nc"><i>8</i>&nbsp;public class Main {</b>
+<i>9</i>&nbsp;    public static void main(String[] args) {
+<i>10</i>&nbsp;        try {
+<b class="nc"><i>11</i>&nbsp;            ZipInputStream zis = new ZipInputStream(</b>
+<i>12</i>&nbsp;                    new FileInputStream(&quot;.\\lab3\\Practice3\\src.zip&quot;));
+<b class="nc"><i>13</i>&nbsp;            ZipEntry entry = zis.getNextEntry();</b>
+<b class="nc"><i>14</i>&nbsp;            String pattern1 = &quot;.java&quot;;</b>
+<i>15</i>&nbsp;            String temp;
+<i>16</i>&nbsp;            String[] dic;
+<b class="nc"><i>17</i>&nbsp;            ArrayList&lt;String&gt; result_list = new ArrayList&lt;&gt;(300);</b>
+<i>18</i>&nbsp;
+<b class="nc"><i>19</i>&nbsp;            while (entry != null) {</b>
+<b class="nc"><i>20</i>&nbsp;                temp = entry.getName();</b>
+<b class="nc"><i>21</i>&nbsp;                dic = temp.split(&quot;/&quot;);</b>
+<b class="nc"><i>22</i>&nbsp;                if (dic[0].equals(&quot;java&quot;) &amp;&amp;</b>
+<b class="nc"><i>23</i>&nbsp;                        (dic[1].equals(&quot;io&quot;) || dic[1].equals(&quot;nio&quot;)) &amp;&amp;</b>
+<b class="nc"><i>24</i>&nbsp;                        checkPostFix(pattern1, temp)) {</b>
+<b class="nc"><i>25</i>&nbsp;                    result_list.add(temp);</b>
+<i>26</i>&nbsp;                }
+<b class="nc"><i>27</i>&nbsp;                entry = zis.getNextEntry();</b>
+<i>28</i>&nbsp;            }
+<i>29</i>&nbsp;
+<b class="nc"><i>30</i>&nbsp;            showResult(result_list, &quot;java&quot;);</b>
+<i>31</i>&nbsp;
+<b class="nc"><i>32</i>&nbsp;            zis.close();</b>
+<b class="nc"><i>33</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>34</i>&nbsp;            System.out.println(&quot;IOException.&quot;);</b>
+<b class="nc"><i>35</i>&nbsp;        }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;        try {
+<b class="nc"><i>38</i>&nbsp;            ZipInputStream zis = new ZipInputStream(</b>
+<i>39</i>&nbsp;                    new FileInputStream(&quot;.\\lab3\\Practice3\\rt.jar&quot;));
+<b class="nc"><i>40</i>&nbsp;            ZipEntry entry = zis.getNextEntry();</b>
+<i>41</i>&nbsp;
+<b class="nc"><i>42</i>&nbsp;            String pattern2 = &quot;.class&quot;;</b>
+<i>43</i>&nbsp;            String temp;
+<i>44</i>&nbsp;            String[] dic;
+<b class="nc"><i>45</i>&nbsp;            ArrayList&lt;String&gt; result_list = new ArrayList&lt;&gt;(300);</b>
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;            while (entry != null) {</b>
+<b class="nc"><i>48</i>&nbsp;                temp = entry.getName();</b>
+<b class="nc"><i>49</i>&nbsp;                dic = temp.split(&quot;/&quot;);</b>
+<b class="nc"><i>50</i>&nbsp;                if (dic[0].equals(&quot;java&quot;) &amp;&amp;</b>
+<b class="nc"><i>51</i>&nbsp;                        (dic[1].equals(&quot;io&quot;) || dic[1].equals(&quot;nio&quot;)) &amp;&amp;</b>
+<b class="nc"><i>52</i>&nbsp;                        checkPostFix(pattern2, temp)) {</b>
+<b class="nc"><i>53</i>&nbsp;                    result_list.add(temp);</b>
+<i>54</i>&nbsp;                }
+<b class="nc"><i>55</i>&nbsp;                entry = zis.getNextEntry();</b>
+<i>56</i>&nbsp;            }
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;            showResult(result_list, &quot;class&quot;);</b>
+<b class="nc"><i>59</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>60</i>&nbsp;            System.out.println(&quot;IOException.&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;        }</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    private static boolean checkPostFix (String pattern, String m) {
+<b class="nc"><i>65</i>&nbsp;        int a = pattern.length();</b>
+<b class="nc"><i>66</i>&nbsp;        int b = m.length();</b>
+<b class="nc"><i>67</i>&nbsp;        if (a &gt; b) return false;</b>
+<b class="nc"><i>68</i>&nbsp;        if (a == b) return pattern.equals(m);</b>
+<b class="nc"><i>69</i>&nbsp;        for (int i = 1; i &lt;= a; i ++) {</b>
+<b class="nc"><i>70</i>&nbsp;            if (m.charAt(b-i) != pattern.charAt(a-i)) {</b>
+<b class="nc"><i>71</i>&nbsp;                return false;</b>
+<i>72</i>&nbsp;            }
+<i>73</i>&nbsp;        }
+<b class="nc"><i>74</i>&nbsp;        return true;</b>
+<i>75</i>&nbsp;    }
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    private static void showResult (ArrayList&lt;String&gt; ls, String st) {
+<b class="nc"><i>78</i>&nbsp;        System.out.printf(&quot;Count of .%s file in java.io/java.nio: %d\n&quot;, st, ls.size());</b>
+<b class="nc"><i>79</i>&nbsp;        for (String s : ls) {</b>
+<b class="nc"><i>80</i>&nbsp;            System.out.println(s);</b>
+<b class="nc"><i>81</i>&nbsp;        }</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-15 19:54</div>
+</div>
+</body>
+</html>
